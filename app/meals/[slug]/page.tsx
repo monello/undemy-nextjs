@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getMeal } from '@/lib/meals';
 import styles from './page.module.css';
+import { notFound } from 'next/navigation';
 
 interface Params {
     slug: string;
@@ -12,6 +13,11 @@ interface MealDetailsPageProps {
 
 export default function MealDetailsPage({ params }: MealDetailsPageProps) {
     const meal = getMeal(params.slug);
+
+    if (!meal) {
+        notFound();
+    }
+
     meal.instructions = meal.instructions.replace(/\n/g, '<br />');
 
     return (
