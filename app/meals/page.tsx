@@ -3,8 +3,8 @@ import MealsGrid from '@/components/Meals/MealsGrid/MealsGrid';
 import { getMeals } from '@/lib/meals';
 import styles from './page.module.css';
 
-export default function MealsPage() {
-    const meals = getMeals();
+export default async function MealsPage() {
+    const meals = await getMeals();
 
     return (
         <>
