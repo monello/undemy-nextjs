@@ -2,6 +2,7 @@
 
 import { MealFormData } from '@/components/Meals/types';
 import { saveMeal } from './meals';
+import { redirect } from 'next/navigation';
 
 export async function shareMeal(formData: FormData) {
     const meal: MealFormData = {
@@ -14,4 +15,5 @@ export async function shareMeal(formData: FormData) {
     };
 
     await saveMeal(meal);
+    redirect('/meals');
 }
